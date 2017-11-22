@@ -1,11 +1,11 @@
 import React from 'react';
 
-function ContatoView(props) {
+function ContatoView( props ) {
 
     const { avatar, nome} = props.contato;
 
     return (
-			<div className='columns is-1 .is-centered'>
+			<div className='columns is-1 is-centered'>
 				<div className='column' key={nome + '_avatar'} name="avatar">
 					<figure className="image is-64x64">
 						<img src="https://bulma.io/images/placeholders/256x256.png" alt='logo' />

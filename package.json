@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "bulma": "^0.6.1",
+    "escape-string-regexp": "^1.0.5",
     "font-awesome": "^4.7.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "react-scripts": "^1.0.17"
+    "react-scripts": "^1.0.17",
+    "sort-by": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

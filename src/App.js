@@ -3,6 +3,8 @@ import ContatoView from './ContatoView';
 import Consulta from './Consulta';
 import './App.css';
 import 'bulma/css/bulma.css';
+import escapeRegExp from 'escape-string-regexp';
+import sortBy from 'sort-by'
 
 class App extends Component {
 
@@ -18,7 +20,13 @@ class App extends Component {
 		{
 			avatar: 'qualquer',
 			nome: 'João'
-		}]
+		}],
+
+		query : ''
+	}
+
+	atualizaQuery = (query) => {
+		this.setState( { query });
 	}
 
 	apagarContato = (cont1) => {
@@ -28,12 +36,27 @@ class App extends Component {
     }
 
 	render() {
+		let mostrarContatos;
+
+		if ( this.state.query ) {
+			const match = new RegExp( escapeRegExp( this.state.query ), 'i' );
+
+			mostrarContatos = this.state.contatos.fill( (contato) => { 
+				console.log(match.test(contato));
+				return match.test( contato.nome ) } );
+		} else {
+			mostrarContatos = this.state.contatos;
+		}
+
+		mostrarContatos.sort( sortBy('nome') );
 
 		return (
 			<div className="App">
-				<Consulta />
+				<Consulta consultar={ this.atualizaQuery } query= { this.state.query } />
 
-				{ this.state.contatos.map( (contato) => ( <ContatoView  key={contato.nome}
+				<label>{ this.state.query }</label>
+
+				{ mostrarContatos.map( (contato) => ( <ContatoView  key={contato.nome}
 					contato={contato}
 					apagar={this.apagarContato} /> ) )
 				}
