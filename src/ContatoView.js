@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function ContatoView( props ) {
 
@@ -13,7 +14,7 @@ function ContatoView( props ) {
 				</div>
 				<div className='column is-10' key={nome + '_contato'} name="contato">{nome}</div>
 				<div className='column is-danger' key={nome + '_delete'} name="delete">
-					<a className='delete is-danger' onClick={ () => props.apagar(props.contato) }> </a>
+					<Link className='delete is-danger' to={{ hash: '#'}} onClick={ () => props.apagar(props.contato) } />
 				</div>
 			</div>
         )
